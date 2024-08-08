@@ -5,4 +5,4 @@ WHERE
     score < 80 AND 
     (last_meeting IS NULL 
         OR 
-    last_meeting < SUBDATE(CURDATE(), INTERVAL 1 MONTH));
+    last_meeting < SUB_DATE(CURDATE(), INTERVAL 1 MONTH));
