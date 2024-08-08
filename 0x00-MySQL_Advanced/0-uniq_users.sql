@@ -1,6 +1,7 @@
---create user table
+--create user table  to add id and email and name 
+-- id is primer key
 CREATE TABLE IF NOT EXISTS users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    name VARCHAR(255)
+	id INTEGER AUTOINCREMENT PRIMARY KEY,
+	email VARCHAR(255) NOT NULL UNIQUE,
+	name VARCHAR(255)
 );
