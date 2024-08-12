@@ -1,4 +1,4 @@
-//update a document while name = Holberton school
+//update doc db
 db.school.update(
     { name: "Holberton school" },
     { $set: { address: "972 Mission street" } },
