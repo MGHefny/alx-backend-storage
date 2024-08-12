@@ -1,0 +1,2 @@
+// remove all document while name Holberton School
+db.school.deleteMany({name: "Holberton school"})
