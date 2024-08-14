@@ -51,7 +51,7 @@ def replay(method: Callable) -> Callable:
     """
     b2_key = method.__qualname__
     re_get = redis.Redis()
-    coun = re_get.get(b2_key).decode("utf-8")
+    coun = len(info_i)
     i2_key = b2_key + ":inputs"
     o2_key = b2_key + ":outputs"
     print("{} was called {} times:".format(b2_key, coun))
