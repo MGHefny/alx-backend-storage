@@ -27,6 +27,8 @@ class Cache:
             fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         """"""
         info = self._redis.get(key)
+        if info is None:
+            return info
         if fn:
             info = fn(info)
         return info
