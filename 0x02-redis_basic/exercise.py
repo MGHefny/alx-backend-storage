@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""method"""
+"""method 0x02. Redis basic"""
 import redis
 from uuid import uuid4
 from typing import Union, Callable, Optional
