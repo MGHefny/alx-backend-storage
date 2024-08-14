@@ -47,20 +47,22 @@ def call_history(method: Callable) -> Callable:
 
 def replay(method: Callable) -> None:
     """repet all abrove function"""
-    b2_key = method.__qualname__
-    re_get = redis.Redis()
-    coun = re_get.get(b2_key).decode("utf-8")
-    i2_key = b2_key + ":inputs"
-    o2_key = b2_key + ":outputs"
-    info_i = re_get.lrange(b2_key + ":inputs", 0, -1)
-    info_o = re_get.lrange(b2_key + ":outputs", 0, -1)
-    print("{} was called {} times:".format(b2_key, coun))
-    for inputs, outputs in zip(info_i, info_o):
-        print(
-            "{}(*{}) -> {}".format(
-                b2_key, inputs.decode("utf-8"), outputs.decode("utf-8")
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        b2_key = method.__qualname__
+        re_get = redis.Redis()
+        coun = re_get.get(b2_key).decode("utf-8")
+        i2_key = b2_key + ":inputs"
+        o2_key = b2_key + ":outputs"
+        info_i = re_get.lrange(b2_key + ":inputs", 0, -1)
+        info_o = re_get.lrange(b2_key + ":outputs", 0, -1)
+        print("{} was called {} times:".format(b2_key, coun))
+        for inputs, outputs in zip(info_i, info_o):
+            print(
+                    "{}(*{}) -> {}".format(
+                        b2_key, inputs.decode("utf-8"), outputs.decode("utf-8")
+                )
             )
-        )
 
 
 """task 0"""
