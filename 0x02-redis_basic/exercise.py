@@ -20,3 +20,28 @@ class Cache:
         ref_key = str(uuid4())
         self._redis.set(ref_key, data)
         return ref_key
+
+    """task 1"""
+
+    def get(
+        self, key: str, fn: Optional[Callable] = None
+    ) -> Union[str, bytes, int, float]:
+        """"""
+        info = self._redis.get(key)
+        if fn:
+            info = fn(info)
+        return info
+
+    def get_atr(self, key: str) -> str:
+        """"""
+        info = self._redis.get(key)
+        return info.decode("utf-8")
+
+    def get_int(self, key: str) -> int:
+        """"""
+        info = self._redis.get(key)
+        try:
+            info = int(info.decode("utf-8"))
+        except Exception:
+            info = 0
+        return info
