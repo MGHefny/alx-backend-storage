@@ -3,12 +3,14 @@ class Cache:
     """"""
 
     def __init__(self):
+        """"""
         self._redis = redis.Redis(host="localhost", port=6379, db=0)
         self._redis.flushdb()
 
     @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
+        """"""
         ref_key = str(uuid4())
         self._redis.set(ref_key, data)
         return ref_key
