@@ -5,15 +5,20 @@ from typing import Union, Callable, Optional
 from functools import wraps
 
 """task 2"""
+
+
 def count_calls(method: Callable) -> Callable:
     """"""
     key = method.__qualname__
+
     @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
         """"""
         self._redis.incr(key)
         return method(self, *args, **kwargs)
+
     return wrapper
+
 
 """task 0"""
 
@@ -26,6 +31,7 @@ class Cache:
         self._redis = redis.Redis(host="localhost", port=6379, db=0)
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """re str"""
         ref_key = str(uuid4())
@@ -34,8 +40,9 @@ class Cache:
 
     """task 1"""
 
-    def get(self, key: str,
-            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
+    def get(
+        self, key: str, fn: Optional[Callable] = None
+    ) -> Union[str, bytes, int, float]:
         """convert info format"""
         info = self._redis.get(key)
         if fn:
