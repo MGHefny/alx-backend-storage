@@ -9,12 +9,12 @@ from functools import wraps
 
 def count_calls(method: Callable) -> Callable:
     """"""
-    key = method.__qualname__
+    c_key = method.__qualname__
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """"""
-        self._redis.incr(key)
+        self._redis.incr(c_key)
         return method(self, *args, **kwargs)
 
     return wrapper
