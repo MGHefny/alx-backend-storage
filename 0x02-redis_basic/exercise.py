@@ -40,9 +40,9 @@ def call_history(method: Callable) -> Callable:
         return output
 
     return wrapper
-
-
 """task 4"""
+
+
 def replay(method: Callable) -> None:
     """repet all abrove function
     Args:
