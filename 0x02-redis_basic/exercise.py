@@ -33,7 +33,7 @@ class Cache:
             info = fn(info)
         return info
 
-    def get_atr(self, key: str) -> str:
+    def get_str(self, key: str) -> str:
         """"""
         info = self._redis.get(key)
         return info.decode("utf-8")
