@@ -32,6 +32,7 @@ class Cache:
         self._redis.flushdb()
 
     @count_calls
+
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """re str"""
         ref_key = str(uuid4())
