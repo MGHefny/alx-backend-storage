@@ -7,11 +7,11 @@ from functools import wraps
 """task 2"""
 def count_calls(method: Callable) -> Callable:
     """"""
-    c_key = method.__qualname__
+    key = method.__qualname__
     @functools.wraps(method)
     def wrapper(self, *args, **kwargs):
         """"""
-        self._redis.incr(c_key)
+        self._redis.incr(key)
         return method(self, *args, **kwargs)
     return wrapper
 
