@@ -19,10 +19,13 @@ def count_calls(method: Callable) -> Callable:
 
     return wrapper
 
+
 """task 3"""
+
 
 def call_history(method: Callable) -> Callable:
     """class called"""
+
     @wraps(method)
     def wrapper(self, *args, **kwargs):
         """return wrapper"""
@@ -38,7 +41,10 @@ def call_history(method: Callable) -> Callable:
 
     return wrapper
 
+
 """task 4"""
+
+
 def replay(method: Callable) -> None:
     """repet all abrove function"""
     b2_key = method.__qualname__
@@ -48,8 +54,12 @@ def replay(method: Callable) -> None:
     info_i = b2_key.lrange(name + ":inputs", 0, -1)
     info_o = b2_key.lrange(name + ":outputs", 0, -1)
     for inputs, outputs in zip(info_i, info_o):
-        print("{}(*{}) -> {}".format(b2_key, inputs.decode("utf-8"),
-                                    outputs.decode("utf-8")))
+        print(
+            "{}(*{}) -> {}".format(
+                b2_key, inputs.decode("utf-8"), outputs.decode("utf-8")
+            )
+        )
+
 
 """task 0"""
 
