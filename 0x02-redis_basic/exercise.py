@@ -8,14 +8,33 @@ from functools import wraps
 
 
 def count_calls(method: Callable) -> Callable:
-    """"""
+    """class called"""
     c_key = method.__qualname__
 
     @wraps(method)
     def wrapper(self, *args, **kwargs):
-        """"""
+        """return wrapper"""
         self._redis.incr(c_key)
         return method(self, *args, **kwargs)
+
+    return wrapper
+
+"""task 3"""
+
+def call_history(method: Callable) -> Callable:
+    """class called"""
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """return wrapper"""
+        b_key = method.__qualname__
+        i_key = b_key + ":inputs"
+        o_key = b_key + ":outputs"
+        i_info = str(args)
+        self._redis.rpush(i_key. i_info)
+        output = method(self, *args, **kwargs)
+        o_info = str(output)
+        self._redis.rpush(o_key, o_info)
+        return output
 
     return wrapper
 
@@ -31,6 +50,7 @@ class Cache:
         self._redis = redis.Redis(host="localhost", port=6379, db=0)
         self._redis.flushdb()
 
+    @call_history
     @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """re str"""
