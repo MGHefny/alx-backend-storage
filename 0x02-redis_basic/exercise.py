@@ -60,7 +60,7 @@ def replay(method: Callable):
     for inp, out in zip(info_i, info_o):
         print(
             "{}(*{}) -> {}".format(
-                b2_key, inp.decode("utf-8"), out.decode("utf-8")
+                b2_key, inp.decode("utf-8"), out.decode("utf-8"),
             )
         )
 
