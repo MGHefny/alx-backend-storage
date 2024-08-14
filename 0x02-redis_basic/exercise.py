@@ -51,12 +51,12 @@ def replay(method: Callable) -> Callable:
     """
     b2_key = method.__qualname__
     re_get = redis.Redis()
-    coun = len(info_i)
     i2_key = b2_key + ":inputs"
     o2_key = b2_key + ":outputs"
-    print("{} was called {} times:".format(b2_key, coun))
     info_i = re_get.lrange(i2_key, 0, -1)
     info_o = re_get.lrange(o2_key, 0, -1)
+    coun = len(info_i)
+    print("{} was called {} times:".format(b2_key, coun))
     for inputs, outputs in zip(info_i, info_o):
         print(
             "{}(*{}) -> {}".format(
