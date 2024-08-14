@@ -79,7 +79,6 @@ class Cache:
 
     @call_history
     @count_calls
-    @replay
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """re str"""
         ref_key = str(uuid4())
