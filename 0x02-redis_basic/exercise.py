@@ -43,9 +43,10 @@ def call_history(method: Callable) -> Callable:
 
 
 def replay(method: Callable):
-    """repet all abrove function
+    """
+    repet all abrove function
     Args:
-        method: function
+        method (Callable): method.
     Returns:
         None
     """
