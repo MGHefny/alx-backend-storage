@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import redis
-import uuid
-from typing import Union
+from uuid import uuid4
+from typing import Union, Callable, Optional
+from functools import wraps
 
 
 class Cache:
