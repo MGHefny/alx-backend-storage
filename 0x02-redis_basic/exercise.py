@@ -46,7 +46,12 @@ def call_history(method: Callable) -> Callable:
 
 
 def replay(method: Callable) -> None:
-    """repet all abrove function"""
+    """repet all abrove function
+    Args:
+        method: function
+    Returns:
+        None
+    """
     b2_key = method.__qualname__
     re_get = redis.Redis()
     coun = re_get.get(b2_key).decode("utf-8")
