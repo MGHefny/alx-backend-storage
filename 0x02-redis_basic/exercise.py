@@ -40,9 +40,8 @@ class Cache:
 
     """task 1"""
 
-    def get(
-        self, key: str, fn: Optional[Callable] = None
-    ) -> Union[str, bytes, int, float]:
+    def get(self, key: str,
+            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
         """convert info format"""
         info = self._redis.get(key)
         if fn:
