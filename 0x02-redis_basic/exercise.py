@@ -30,7 +30,7 @@ def call_history(method: Callable) -> Callable:
         i_key = b_key + ":inputs"
         o_key = b_key + ":outputs"
         i_info = str(args)
-        self._redis.rpush(i_key. i_info)
+        self._redis.rpush(i_key, i_info)
         output = method(self, *args, **kwargs)
         o_info = str(output)
         self._redis.rpush(o_key, o_info)
