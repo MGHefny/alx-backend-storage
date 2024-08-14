@@ -51,8 +51,8 @@ def replay(method: Callable) -> None:
     re_get = redis.Redis()
     i2_key = b2_key + ":inputs"
     o2_key = b2_key + ":outputs"
-    info_i = b2_key.lrange(name + ":inputs", 0, -1)
-    info_o = b2_key.lrange(name + ":outputs", 0, -1)
+    info_i = re_get.lrange(b2_key + ":inputs", 0, -1)
+    info_o = re_get.lrange(b2_key + ":outputs", 0, -1)
     for inputs, outputs in zip(info_i, info_o):
         print(
             "{}(*{}) -> {}".format(
