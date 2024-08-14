@@ -57,9 +57,8 @@ def replay(method: Callable) -> None:
     o2_key = b2_key + ":outputs"
 
     info_i = re_get.lrange(i2_key, 0, -1)
-    info_o = re_get.lrange(o2_key, 0, -1
-    )
-    
+    info_o = re_get.lrange(o2_key, 0, -1)
+
     coun = len(info_i)
     print("{} was called {} times:".format(b2_key, coun))
 
@@ -92,8 +91,9 @@ class Cache:
 
     """task 1"""
 
-    def get(self, key: str,
-            fn: Optional[Callable] = None) -> Union[str, bytes, int, float]:
+    def get(
+        self, key: str, fn: Optional[Callable] = None
+    ) -> Union[str, bytes, int, float]:
         """convert info format"""
         info = self._redis.get(key)
         if fn:
