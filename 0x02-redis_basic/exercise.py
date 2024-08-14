@@ -24,7 +24,7 @@ class Cache:
 """ """
 
 
-class Cash:
+class Cashe:
     def __init__(self):
         self._redis = redis.Redis(host="localhost", port=6379, db=0)
         self._redis.flushdb()
