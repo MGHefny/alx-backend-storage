@@ -43,8 +43,6 @@ def call_history(method: Callable) -> Callable:
 
 
 """task 4"""
-
-
 def replay(method: Callable) -> None:
     """repet all abrove function
     Args:
