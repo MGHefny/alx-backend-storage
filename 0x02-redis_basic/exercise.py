@@ -13,5 +13,5 @@ class Cash:
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """"""
         ref_key = str(uuid.uuid4())
-        self._redis.set(ref_key.data)
+        self._redis.set(ref_key, data)
         return ref_key
