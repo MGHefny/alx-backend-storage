@@ -44,6 +44,7 @@ def call_history(method: Callable) -> Callable:
 
 """task 4"""
 
+
 def replay(method: Callable):
     """replay abrove function"""
     re_get = redis.Redis()
