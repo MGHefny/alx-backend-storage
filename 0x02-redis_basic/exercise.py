@@ -4,6 +4,17 @@ from uuid import uuid4
 from typing import Union, Callable, Optional
 from functools import wraps
 
+"""task 2"""
+def count_calls(method: Callable) -> Callable:
+    """"""
+    c_key = method.__qualname__
+    @functools.wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """"""
+        self._redis.incr(c_key)
+        return method(self, *args, **kwargs)
+    return wrapper
+
 """task 0"""
 
 
