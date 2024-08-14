@@ -31,7 +31,7 @@ class Cache:
         self._redis = redis.Redis(host="localhost", port=6379, db=0)
         self._redis.flushdb()
 
-
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """re str"""
         ref_key = str(uuid4())
