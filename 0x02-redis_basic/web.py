@@ -22,7 +22,7 @@ def total_url_tracker(method):
 
         data.incr(co_key)
         data.set(c_key, c_url)
-        data.expire(f"c_url:{url}", 10)
+        data.expire(c_key, 10)
         return c_url
 
     return wrapper
