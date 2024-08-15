@@ -21,8 +21,8 @@ def total_url_tracker(method):
         c_url = method(url)
 
         data.incr(co_key)
-        data.set(f"count:{url}", 0)
-        data.expire(f"result:{url}", 10, result)
+        data.set(c_key, c_url)
+        data.expire(f"c_url:{url}", 10)
         return c_url
 
     return wrapper
